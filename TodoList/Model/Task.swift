@@ -21,7 +21,7 @@ var sampleTasks: [Task] = [
     .init(taskTitle: "Go for a Walk", creationDate: .updateHour(-4), tint: .hotpink),
     .init(taskTitle: "Edit Video", creationDate: .updateHour(0), isCompeleted: true, tint: .easygreen),
     .init(taskTitle: "Publish Video", creationDate: .updateHour(2), isCompeleted: true, tint: .mediumgreen),
-    .init(taskTitle: "Tweet about new Video!", creationDate: .updateHour(-5), isCompeleted: true, tint: .taskred),
+    .init(taskTitle: "Tweet about new Video!", creationDate: .updateHour(1), tint: .taskred),
 ]
 
 extension Date {

@@ -13,14 +13,38 @@ struct Home: View {
     @State private var weekSlider: [[Date.WeekDay]] = []
     @State private var currentWeekIndex: Int = 1
     @State private var createWeek: Bool = false
+    @State private var tasks: [Task] = sampleTasks.sorted { $1.creationDate > $0.creationDate }
+    @State private var createNewTask: Bool = false
     // Animation Namespace
     @Namespace private var animation
     var body: some View {
         VStack(alignment: .leading, spacing: 0, content: {
             // Header View
             HeaderView()
+            
+            ScrollView(.vertical) {
+                VStack {
+                    // Tasks View
+                    TasksView()
+                }
+                .hSpacing(.center)
+                .vSpacing(.center)
+            }
+            .scrollIndicators(.hidden)
         })
         .vSpacing(.top)
+        .overlay(alignment: .bottomTrailing) {
+            Button(action: {
+                createNewTask.toggle()
+            }, label: {
+                Image(systemName: "plus")
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    .frame(width: 55, height: 55)
+                    .background(.darkblue.shadow(.drop(color: .black.opacity(0.25), radius: 5, x: 10, y: 10)), in: .circle)
+            })
+            .padding(15)
+        }
         .onAppear(perform: {
             if weekSlider.isEmpty {
                 let currentWeek = Date().fetchWeek()
@@ -35,6 +59,13 @@ struct Home: View {
                     weekSlider.append(lastDate.createNextWeek())
                 }
             }
+        })
+        .sheet(isPresented: $createNewTask, content: {
+            NewTaskView()
+                .presentationDetents([.height(300)]) // 시트 높이
+                .interactiveDismissDisabled() // 시트 안닫히네?
+                .presentationCornerRadius(30) // 시트 라인
+                .presentationBackground(Color(.systemGray6))
         })
     }
     
@@ -152,7 +183,7 @@ struct Home: View {
             }
         }
     }
-    
+    // 페이지 넘길 때마다 자동 날짜 변경
     func paginateWeek() {
         // SafeCheck
         if weekSlider.indices.contains(currentWeekIndex) {
@@ -170,6 +201,27 @@ struct Home: View {
                 currentWeekIndex = weekSlider.count - 2
             }
         }
+    }
+    
+    // Tasks View
+    @ViewBuilder
+    func TasksView() -> some View {
+        VStack(alignment: .leading, spacing: 35) {
+            ForEach($tasks) { $task in
+                TaskRowView(task: $task)
+                    .background(alignment: .leading) {
+                        if tasks.last?.id != task.id {
+                            Rectangle()
+                                .frame(width: 1)
+                                .offset(x: 8)
+                                .padding(.bottom, -35)
+                        }
+                    }
+                    
+            }
+        }
+        .padding([.vertical, .leading], 15)
+        .padding(.top, 15)
     }
 }
 

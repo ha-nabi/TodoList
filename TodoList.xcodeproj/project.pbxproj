@@ -16,6 +16,8 @@
 		63EC171B2AFF9010008DD933 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC171A2AFF9010008DD933 /* Date+Extensions.swift */; };
 		63EC171E2AFF90B1008DD933 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC171D2AFF90B1008DD933 /* Home.swift */; };
 		63EC17202AFFABBA008DD933 /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC171F2AFFABBA008DD933 /* OffsetKey.swift */; };
+		63EC17222AFFB1CE008DD933 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC17212AFFB1CE008DD933 /* TaskRowView.swift */; };
+		63EC17242AFFBE06008DD933 /* NewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC17232AFFBE06008DD933 /* NewTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		63EC171A2AFF9010008DD933 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		63EC171D2AFF90B1008DD933 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		63EC171F2AFFABBA008DD933 /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
+		63EC17212AFFB1CE008DD933 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
+		63EC17232AFFBE06008DD933 /* NewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				63EC171D2AFF90B1008DD933 /* Home.swift */,
+				63EC17212AFFB1CE008DD933 /* TaskRowView.swift */,
+				63EC17232AFFBE06008DD933 /* NewTaskView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +184,8 @@
 			files = (
 				63EC17092AFF8CA8008DD933 /* ContentView.swift in Sources */,
 				63EC17162AFF8E00008DD933 /* Task.swift in Sources */,
+				63EC17242AFFBE06008DD933 /* NewTaskView.swift in Sources */,
+				63EC17222AFFB1CE008DD933 /* TaskRowView.swift in Sources */,
 				63EC17192AFF8FF9008DD933 /* View+Extensions.swift in Sources */,
 				63EC17202AFFABBA008DD933 /* OffsetKey.swift in Sources */,
 				63EC171B2AFF9010008DD933 /* Date+Extensions.swift in Sources */,
