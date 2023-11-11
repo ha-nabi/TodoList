@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Home: View {
-    // Task Manager Properties
+    // 투두리스트 Properties
     @State private var currentDate: Date = .init()
     @State private var weekSlider: [[Date.WeekDay]] = []
     @State private var currentWeekIndex: Int = 1
@@ -145,7 +145,7 @@ struct Home: View {
                                     .matchedGeometryEffect(id: "TABINDICATOR", in: animation)
                             }
                             
-                            // Indicator to Show, Which is Today;s Date
+                            // 오늘 날짜를 표시해줌
                             if day.date.isToday {
                                 Circle()
                                     .fill(.cyan)
@@ -185,17 +185,17 @@ struct Home: View {
     }
     // 페이지 넘길 때마다 자동 날짜 변경
     func paginateWeek() {
-        // SafeCheck
+        // 안전한지 확인
         if weekSlider.indices.contains(currentWeekIndex) {
             if let firstDate = weekSlider[currentWeekIndex].first?.date, currentWeekIndex == 0 {
-                // Inserting New Week at 0th Index and Removing Last Array Item
+                // 0번째 인덱스에서 새 주 삽입 및 마지막 배열 항목 제거
                 weekSlider.insert(firstDate.createPreviousWeek(), at: 0)
                 weekSlider.removeLast()
                 currentWeekIndex = 1
             }
             
             if let lastDate = weekSlider[currentWeekIndex].last?.date, currentWeekIndex == (weekSlider.count - 1) {
-                // Appending New Week at Last Index and Removing First Array Item
+                // 마지막 인덱스에서 새 주 추가 및 첫 번째 배열 항목 제거
                 weekSlider.append(lastDate.createNextWeek())
                 weekSlider.removeFirst()
                 currentWeekIndex = weekSlider.count - 2

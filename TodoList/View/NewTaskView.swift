@@ -46,7 +46,7 @@ struct NewTaskView: View {
                         .datePickerStyle(.compact)
                         .scaleEffect(0.9, anchor: .leading)
                 }
-                // Giving Some Space for tapping
+                // 터치 할 수 있는 공간 제공
                 .padding(.trailing, -15)
                 
                 VStack(alignment: .leading, spacing: 8) {

@@ -21,7 +21,7 @@ extension View {
             .frame(maxHeight: .infinity, alignment: alignment)
     }
     
-    // Checking Two dates are same
+    // 두 날짜가 동일한지 체킹
     func isSameDate(_ date1: Date, _ date2: Date) -> Bool {
         return Calendar.current.isDate(date1, inSameDayAs: date2)
     }

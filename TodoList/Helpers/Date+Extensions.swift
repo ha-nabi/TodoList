@@ -17,22 +17,22 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    // Checking Whether the Date is Today
+    // 날짜가 오늘인지 확인
     var isToday: Bool {
         return Calendar.current.isDateInToday(self)
     }
     
-    // Checking if the date is Same Hour
+    // 날짜가 같은 시간 인지 확인
     var isSameHour: Bool {
         return Calendar.current.compare(self, to: .init(), toGranularity: .hour) == .orderedSame
     }
     
-    // Checking if the date is Past Hour
+    // 날짜가 지난 시간인지 확인
     var isPast: Bool {
         return Calendar.current.compare(self, to: .init(), toGranularity: .hour) == .orderedAscending
     }
     
-    // Fetching Week Based on given Date
+    // 지정된 날짜를 기준으로 주 가져오기
     func fetchWeek(_ date: Date = .init()) -> [WeekDay] {
         let calendar = Calendar.current
         let startOfDate = calendar.startOfDay(for: date)
@@ -43,7 +43,7 @@ extension Date {
             return []
         }
         
-        // Iterating to get the Full Week
+        // 한 주를 계속 반복해서 받기
         (0..<7).forEach { index in
             if let weekDay = calendar.date(byAdding: .day, value: index, to: starOfWeek) {
                 week.append(.init(date: weekDay))
@@ -53,7 +53,7 @@ extension Date {
         return week
     }
     
-    // Creating Next Week, based on the Last Current Week's Date
+    // 마지막 현재 주 날짜를 기준으로 다음 주 만들기
     func createNextWeek() -> [WeekDay] {
         let calendar = Calendar.current
         let startOfLastDate = calendar.startOfDay(for: self)
@@ -64,7 +64,7 @@ extension Date {
         return fetchWeek(nextDate)
     }
     
-    // Creating Previous Week, based on the first Current Week's Date
+    // 첫 번째 현재 주 날짜를 기준으로 이전 주 만들기
     func createPreviousWeek() -> [WeekDay] {
         let calendar = Calendar.current
         let startOfFirstDate = calendar.startOfDay(for: self)

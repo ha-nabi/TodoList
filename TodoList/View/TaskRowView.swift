@@ -20,7 +20,7 @@ struct TaskRowView: View {
                     Circle()
                         .frame(width: 50, height: 50)
                         .blendMode(.destinationOver)
-                        // To make the button tap more accessible, i'm adding an invisible layer to receive the taps.
+                        // 버튼 탭을 더 쉽게 터치 할 수 있도록 보이지 않는 레이어를 추가
                         .onTapGesture {
                             withAnimation(.snappy) {
                                 task.isCompeleted.toggle()
