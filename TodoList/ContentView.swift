@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         Home()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(.systemBackground))
+            .background(Color(.systemGray6))
             .preferredColorScheme(.light)
     }
 }

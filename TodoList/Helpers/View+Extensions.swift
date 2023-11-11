@@ -9,7 +9,7 @@ import SwiftUI
 
 // Custom View Extensions
 extension View {
-    // Custom Spacers
+    // Custom Spacers 이거 완전 유용할듯 대박;
     func hSpacing(_ alignment: Alignment) -> some View {
         self
             .frame(maxWidth: .infinity, alignment: alignment)
@@ -20,4 +20,11 @@ extension View {
         self
             .frame(maxHeight: .infinity, alignment: alignment)
     }
+    
+    // Checking Two dates are same
+    func isSameDate(_ date1: Date, _ date2: Date) -> Bool {
+        return Calendar.current.isDate(date1, inSameDayAs: date2)
+    }
 }
+
+

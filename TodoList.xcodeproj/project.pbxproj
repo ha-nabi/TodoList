@@ -15,6 +15,7 @@
 		63EC17192AFF8FF9008DD933 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC17182AFF8FF9008DD933 /* View+Extensions.swift */; };
 		63EC171B2AFF9010008DD933 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC171A2AFF9010008DD933 /* Date+Extensions.swift */; };
 		63EC171E2AFF90B1008DD933 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC171D2AFF90B1008DD933 /* Home.swift */; };
+		63EC17202AFFABBA008DD933 /* OffsetKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC171F2AFFABBA008DD933 /* OffsetKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		63EC17182AFF8FF9008DD933 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		63EC171A2AFF9010008DD933 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		63EC171D2AFF90B1008DD933 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		63EC171F2AFFABBA008DD933 /* OffsetKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				63EC17182AFF8FF9008DD933 /* View+Extensions.swift */,
 				63EC171A2AFF9010008DD933 /* Date+Extensions.swift */,
+				63EC171F2AFFABBA008DD933 /* OffsetKey.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				63EC17092AFF8CA8008DD933 /* ContentView.swift in Sources */,
 				63EC17162AFF8E00008DD933 /* Task.swift in Sources */,
 				63EC17192AFF8FF9008DD933 /* View+Extensions.swift in Sources */,
+				63EC17202AFFABBA008DD933 /* OffsetKey.swift in Sources */,
 				63EC171B2AFF9010008DD933 /* Date+Extensions.swift in Sources */,
 				63EC171E2AFF90B1008DD933 /* Home.swift in Sources */,
 				63EC17072AFF8CA8008DD933 /* TodoListApp.swift in Sources */,
