@@ -6,23 +6,35 @@
 //
 
 import SwiftUI
+import SwiftData
 
-struct Task: Identifiable {
-    var id: UUID = .init()
+@Model
+class Task: Identifiable {
+    var id: UUID
     var taskTitle: String
-    var creationDate: Date = .init()
-    var isCompeleted: Bool = false
-    var tint: Color
+    var creationDate: Date
+    var isCompeleted: Bool
+    var tint: String
+    
+    init(id: UUID = .init(), taskTitle: String, creationDate: Date = .init(), isCompeleted: Bool = false, tint: String) {
+        self.id = id
+        self.taskTitle = taskTitle
+        self.creationDate = creationDate
+        self.isCompeleted = isCompeleted
+        self.tint = tint
+    }
+    
+    var tintColor: Color {
+        switch tint {
+        case "TaskColor 1": return .taskColor1
+        case "TaskColor 2": return .taskColor2
+        case "TaskColor 3": return .taskColor3
+        case "TaskColor 4": return .taskColor4
+        case "TaskColor 5": return .taskColor5
+        default: return .black
+        }
+    }
 }
-
-var sampleTasks: [Task] = [
-    .init(taskTitle: "Record Video", creationDate: .updateHour(-5), isCompeleted: true, tint: .darkgreen),
-    .init(taskTitle: "Redesign Website", creationDate: .updateHour(-3), tint: .taskpink),
-    .init(taskTitle: "Go for a Walk", creationDate: .updateHour(-4), tint: .hotpink),
-    .init(taskTitle: "Edit Video", creationDate: .updateHour(0), isCompeleted: true, tint: .easygreen),
-    .init(taskTitle: "Publish Video", creationDate: .updateHour(2), isCompeleted: true, tint: .mediumgreen),
-    .init(taskTitle: "Tweet about new Video!", creationDate: .updateHour(1), tint: .taskred),
-]
 
 extension Date {
     static func updateHour(_ value: Int) -> Date {

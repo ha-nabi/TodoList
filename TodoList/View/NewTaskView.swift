@@ -10,9 +10,11 @@ import SwiftUI
 struct NewTaskView: View {
     // View Properties
     @Environment(\.dismiss) private var dismiss
+    // Model Context For Saving Data
+    @Environment(\.modelContext) private var context
     @State private var taskTitle: String = ""
     @State private var taskDate: Date = .init()
-    @State private var taskColor: Color = .darkgreen
+    @State private var taskColor: String = "TaskColor 1"
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             Button(action: {
@@ -25,11 +27,11 @@ struct NewTaskView: View {
             .hSpacing(.leading)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Task Title")
+                Text("제목")
                     .font(.caption)
                     .foregroundStyle(.gray)
                 
-                TextField("Go for a Walk!", text: $taskTitle)
+                TextField("멋쟁이 사자처럼 앱스쿨 3기 졸업하기", text: $taskTitle)
                     .padding(.vertical, 12)
                     .padding(.horizontal, 15)
                     .background(.white.shadow(.drop(color: .black.opacity(0.25), radius: 2)), in: .rect(cornerRadius: 10))
@@ -38,7 +40,7 @@ struct NewTaskView: View {
             
             HStack(spacing: 12) {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Task Date")
+                    Text("날짜")
                         .font(.caption)
                         .foregroundStyle(.gray)
                     
@@ -50,15 +52,17 @@ struct NewTaskView: View {
                 .padding(.trailing, -15)
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Task Color")
+                    Text("색상")
                         .font(.caption)
                         .foregroundStyle(.gray)
                     
-                    let colors: [Color] = [.darkgreen, .hotpink, .taskred, .taskpink, .mediumgreen]
+                    let colors: [String] = (1...5).compactMap { index -> String in
+                        return "TaskColor \(index)"
+                    }
                     HStack(spacing: 0) {
                         ForEach(colors, id: \.self) { color in
                             Circle()
-                                .fill(color)
+                                .fill(Color(color))
                                 .frame(width: 20, height: 20)
                                 .background {
                                     Circle()
@@ -83,16 +87,25 @@ struct NewTaskView: View {
             Spacer(minLength: 0)
             
             Button {
-                
+                // 일정 저장
+                let task = Task(taskTitle: taskTitle, creationDate: taskDate, tint: taskColor)
+                do {
+                    context.insert(task)
+                    try context.save()
+                    // 일정 생성 후 뷰 강제 닫기
+                    dismiss()
+                } catch {
+                    print(error.localizedDescription)
+                }
             } label: {
-                Text("Create Task")
+                Text("일정 만들기")
                     .font(.title3)
                     .fontWeight(.semibold)
                     .textScale(.secondary)
                     .foregroundStyle(.black)
                     .hSpacing(.center)
                     .padding(.vertical, 12)
-                    .background(taskColor, in: .rect(cornerRadius: 10))
+                    .background(Color(taskColor), in: .rect(cornerRadius: 10))
             }
             .disabled(taskTitle == "")
             .opacity(taskTitle == "" ? 0.5 : 1)

@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct TaskRowView: View {
-    @Binding var task: Task
+    @Bindable var task: Task
+    // Model Conetxt
+    @Environment(\.modelContext) private var context
     var body: some View {
         HStack(alignment: .top, spacing: 15, content: {
             Circle()
@@ -18,9 +20,9 @@ struct TaskRowView: View {
                 .background(.white.shadow(.drop(color: .black.opacity(0.1), radius: 3)), in: .circle)
                 .overlay {
                     Circle()
+                        .foregroundStyle(.clear)
+                        .contentShape(.circle)
                         .frame(width: 50, height: 50)
-                        .blendMode(.destinationOver)
-                        // 버튼 탭을 더 쉽게 터치 할 수 있도록 보이지 않는 레이어를 추가
                         .onTapGesture {
                             withAnimation(.snappy) {
                                 task.isCompeleted.toggle()
@@ -39,8 +41,16 @@ struct TaskRowView: View {
             })
             .padding(15)
             .hSpacing(.leading)
-            .background(task.tint, in: .rect(topLeadingRadius: 15, bottomLeadingRadius: 15))
+            .background(task.tintColor, in: .rect(topLeadingRadius: 15, bottomLeadingRadius: 15))
             .strikethrough(task.isCompeleted, pattern: .solid, color: .black)
+            .contentShape(.contextMenuPreview, .rect(cornerRadius: 15))
+            .contextMenu {
+                Button("일정 지우기", role: .destructive) {
+                    // Deleting Task
+                    context.delete(task)
+                    try? context.save()
+                }
+            }
             .offset(y: -8)
         })
     }
@@ -50,7 +60,7 @@ struct TaskRowView: View {
             return .green
         }
         
-        return task.creationDate.isSameHour ? .darkblue : (task.creationDate.isPast ? .taskred : .black)
+        return task.creationDate.isSameHour ? .darkblue : (task.creationDate.isPast ? .taskColor1 : .black)
     }
 }
 
